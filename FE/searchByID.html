@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table" class="table">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>class</td>
+          </tr>
+        </thead>
+        <tbody id="data"></tbody>
+      </table>
+</body>
+<script>
+      $.ajax({
+        type: "POST",
+        url: `http://localhost:8080/HotelManager_war_exploded/getStudentByID`,
+        data: { id: id },
+        success: function (response) {
+          data += `<tr>
+                       <td>${response.id}</td>
+                       <td>${response.name}</td>
+                       <td>${response.className}</td>
+                    </tr>`;
+          $("#data").append(data);
+        },
+      });
+</script>
+</html>
